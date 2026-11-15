@@ -15,15 +15,15 @@ public class Test1 {
                 .build();
         // Pose une question au modèle
         String reponse =
-                modele.chat("Bonjour je suis Mohcine El Mountassar etudiant à l'emsi");
-        System.out.println("question : Bonjour je suis Mohcine El Mountassar etudiant à l'emsi");
+                modele.chat("Comment s'appelle le chat de Pierre ?");
+        System.out.println("question : Comment s'appelle le chat de Pierre ? ");
         // Affiche réponse du modèle (hello)
         System.out.println("reponse :"+reponse);
 
-        reponse = modele.chat("Quel est mon nom ?");
-        System.out.println("question :Quel est mon nom ?");
-        // Affiche réponse du modèle (hello)
-        System.out.println("reponse :"+reponse);
+//        reponse = modele.chat("Quel est mon nom ?");
+//        System.out.println("question :Quel est mon nom ?");
+//        // Affiche réponse du modèle (hello)
+//        System.out.println("reponse :"+reponse);
     }
 
 }
