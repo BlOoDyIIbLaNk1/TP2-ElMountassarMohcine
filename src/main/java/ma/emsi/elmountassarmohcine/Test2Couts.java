@@ -17,7 +17,7 @@ public class Test2Couts {
                 .temperature(0.7)
                 .build();
         // Pose une question au modèle
-        UserMessage message = UserMessage.from("Bonjour je suis Mohcine El Mountassar etudiant à l'emsi");
+        UserMessage message = UserMessage.from("Je dois partir dans 2 jours à Paris ; j'y resterai 3 jours. Est-ce que je dois mettre un parapluie dans mes valises ?");
         ChatResponse reponse = modele.chat(message);
 // Récupérer le texte de la réponse
         String texteReponse = reponse.aiMessage().text();
@@ -26,7 +26,7 @@ public class Test2Couts {
         int totalTokens = usage.totalTokenCount();
         int inputTokens = usage.inputTokenCount();
         int outputTokens = usage.outputTokenCount();
-        System.out.println("question : Bonjour je suis Mohcine El Mountassar etudiant à l'emsi");
+        System.out.println("question : Je dois partir dans 2 jours à Paris ; j'y resterai 3 jours. Est-ce que je dois mettre un parapluie dans mes valises ?");
         // Affiche réponse du modèle (hello)
         System.out.println("reponse :"+texteReponse);
         System.out.println("total Token :"+totalTokens);
