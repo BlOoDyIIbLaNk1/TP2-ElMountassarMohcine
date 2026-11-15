@@ -1,5 +1,7 @@
 package ma.emsi.elmountassarmohcine;
 
+import dev.langchain4j.model.google.genai.GoogleGenAiEmbeddingModel;
+import java.time.Duration;
 import dev.langchain4j.data.embedding.Embedding;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.embedding.onnx.bgesmallenv15.BgeSmallEnV15EmbeddingModel;
@@ -91,5 +93,35 @@ public class Test4Embeddings {
         System.out.println("Phrase 11 : " + phrase11);
         System.out.println("Phrase 12 : " + phrase12);
         System.out.println("Similarité : " + similarite6);
+
+        EmbeddingModel modeleGoogle = GoogleGenAiEmbeddingModel.builder()
+                .apiKey(System.getenv("GEMINI_KEY"))
+                .modelName("gemini-embedding-001")
+                .taskType(GoogleGenAiEmbeddingModel.TaskTypeEnum.SEMANTIC_SIMILARITY)
+                .timeout(Duration.ofSeconds(60))
+                .build();
+
+        String[][] couples = {
+                {phrase1, phrase2},
+                {phrase3, phrase4},
+                {phrase5, phrase6},
+                {phrase7, phrase8},
+                {phrase9, phrase10},
+                {phrase11, phrase12}
+        };
+
+        System.out.println("\nRésultats du modèle Google---");
+
+        for (String[] couple : couples) {
+            Embedding premier = modeleGoogle.embed(couple[0]).content();
+            Embedding deuxieme = modeleGoogle.embed(couple[1]).content();
+
+            double score = CosineSimilarity.between(premier, deuxieme);
+
+            System.out.println("Phrase 1 : " + couple[0]);
+            System.out.println("Phrase 2 : " + couple[1]);
+            System.out.println("Similarité Google : " + score);
+            System.out.println();
+        }
     }
 }
